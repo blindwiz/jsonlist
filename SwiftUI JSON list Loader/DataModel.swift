@@ -128,7 +128,10 @@ public func authenticateLogin(email: String, password: String, rootHandler: @esc
                 rootHandler(drinks)
                 print("rootHandler done")
             } catch {
-                print("caught something")
+                print("caught \(error)")
+                var d=Drink()
+                d.name="\(error)"
+                rootHandler([d])
             } // end do
             } // end async
 
