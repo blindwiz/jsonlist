@@ -13,18 +13,17 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+            
             List(self.drinks) { drink in
-                Text("\(drink.name)")
+                Text(drink.name ?? "Unnamed Drink")
             }
             .onAppear {
                 let dm = DataModel()
                 dm.get_drinks_by_id(for: 1) { (mDrinks) in
-                    
                     self.drinks = mDrinks
-                    
                 }
             }
-        }
+        }.navigationTitle("Drinks")
         
     }
 }

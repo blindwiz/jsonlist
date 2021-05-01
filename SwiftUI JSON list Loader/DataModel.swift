@@ -122,11 +122,13 @@ public func authenticateLogin(email: String, password: String, rootHandler: @esc
 
             do {
                 print("*get_drinks_by_id*: \(data.debugDescription)")
-                    
-                let                             drinks = try decoder.decode([Drink].self, from: data)
+                let  drinks = try decoder.decode([Drink].self, from: data)
+                print("got drinks:")
                 print("*get_drinks_by_id*: \(drinks)")
-rootHandler(drinks)
+                rootHandler(drinks)
+                print("rootHandler done")
             } catch {
+                print("caught something")
             } // end do
             } // end async
 
