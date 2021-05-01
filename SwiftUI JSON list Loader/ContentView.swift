@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var drinks:[Drink] = []
+
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(self.drinks) { drink in
+                Text("\(drink.name)")
+            }
+            .onAppear {
+                let dm = DataModel()
+                dm.get_drinks_by_id(for: 1) { (mDrinks) in
+                    
+                    self.drinks = mDrinks
+                    
+                }
+            }
+        }
+        
     }
 }
 
